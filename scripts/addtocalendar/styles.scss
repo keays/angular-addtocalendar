@@ -1,0 +1,9 @@
+addtocalendar {
+    .dropdown-menu {
+        & > li {
+            & > a {
+                cursor: pointer;
+            }
+        }
+    }
+}
