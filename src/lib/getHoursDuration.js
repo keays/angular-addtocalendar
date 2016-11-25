@@ -1,3 +1,7 @@
+'use strict';
+
+var moment = require('moment');
+
 function getMilitaryHours(hours) {
   if(hours < 10) {
     hours = '0' + hours;
@@ -20,3 +24,5 @@ function getHoursDuration(startDate, endDate, timezone) {
 
   return getMilitaryHours(hours);
 }
+
+module.exports = getHoursDuration;

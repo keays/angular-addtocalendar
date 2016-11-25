@@ -2,10 +2,10 @@
   "name": "angular-addtocalendar",
   "version": "1.2.2",
   "description": "AngularJS directive for adding events to calendar apps",
-  "main": "addtocalendar.min.js",
+  "main": "index.js",
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start karma.conf.js --single-run",
-    "build": "rm -rf ./coverage/ && ./node_modules/uglify-js/bin/uglifyjs lib/*.js lib/**/*.js addtocalendar/*.js -o addtocalendar.min.js && cat lib/*.js lib/**/*.js addtocalendar/*.js > addtocalendar.js"
+    "test": "node ./node_modules/karma/bin/karma start karma.conf.js --single-run",
+    "build": "node ./node_modules/webpack/bin/webpack.js"
   },
   "repository": {
     "type": "git",
@@ -27,11 +27,13 @@
   "homepage": "https://github.com/jshor/angular-addtocalendar",
   "devDependencies": {
     "angular-mocks": "^1.5.3",
+    "browserify": "^13.1.1",
     "coveralls": "^2.11.9",
     "istanbul": "^0.4.3",
     "jasmine": "^2.4.1",
     "jasmine-core": "^2.4.1",
     "karma": "^1.1.0",
+    "karma-browserify": "^5.1.0",
     "karma-chrome-launcher": "^1.0.1",
     "karma-coverage": "^1.0.0",
     "karma-coveralls": "^1.1.2",
@@ -40,10 +42,10 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sinon": "^1.0.5",
     "sinon": "^1.17.4",
-    "uglify-js": "^2.6.1"
+    "uglify-js": "^2.6.1",
+    "webpack": "^1.13.3"
   },
   "dependencies": {
-    "angular": "^1.5.3",
     "angular-file-saver": "^1.1.2",
     "moment": "^2.14.1"
   }

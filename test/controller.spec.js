@@ -1,23 +1,36 @@
 /**
  * angular-addtocalendar
- * An AngularJS directive for adding an event to calendar apps. 
- * 
+ * An AngularJS directive for adding an event to calendar apps.
+ *
  * Controller test suite.
  */
 'use strict';
 
+var eventFixtures = require('./fixtures/sampleEvent.fixture');
+
 describe('AddtocalendarCtrl', function() {
-  beforeEach(module('jshor.angular-addtocalendar'));
 
-  var $controller;
-  var FileSaver;
+  var controller,
+    FileSaver;
 
-  beforeEach(inject(function(_$controller_, _FileSaver_) {
-    $controller = _$controller_;
-    FileSaver = _FileSaver_;
-  }));
+  beforeEach(function(done) {
+
+    angular.mock.inject(function($controller) {
+      controller = $controller;
+      FileSaver = { saveAs: jasmine.createSpy() };
+      done();
+    });
+
+  });
 
   Object.keys(eventFixtures).forEach(function (scope) {
+
+    var $scope = eventFixtures[scope];
+    controller('AddtocalendarCtrl', {
+      $scope: $scope,
+      $attrs: {},
+      FileSaver: FileSaver
+    });
 
     /**
      * Yahoo! Calendar
@@ -25,12 +38,6 @@ describe('AddtocalendarCtrl', function() {
     describe('$scope.calendarUrl.yahoo ' + scope, function() {
 
       it('should return the url to add event to a yahoo calendar', function() {
-        var $scope = eventFixtures[scope];
-
-        $controller('AddtocalendarCtrl', {
-          $scope: $scope,
-          $attrs: {}
-        });
 
         var regex = CalendarRegex.getUrlRegex('calendar.yahoo.com/', {
           v: 60,
@@ -54,14 +61,8 @@ describe('AddtocalendarCtrl', function() {
      * Google Calendar
      */
     describe('$scope.calendarUrl.google ' + scope, function() {
-      var $scope = eventFixtures[scope];
 
       it('should return the url to add event to a google calendar', function() {
-        $controller('AddtocalendarCtrl', {
-          $scope: $scope,
-          $attrs: {}
-        });
-
         var regex = CalendarRegex.getUrlRegex('www.google.com/calendar/render', {
           action: 'TEMPLATE',
           text: '(.*)',
@@ -81,14 +82,8 @@ describe('AddtocalendarCtrl', function() {
      * Windows Live Calendar
      */
     describe('$scope.calendarUrl.microsoft ' + scope, function() {
-      var $scope = eventFixtures[scope];
 
       it('should return the url to add event to a windows live calendar', function() {
-        $controller('AddtocalendarCtrl', {
-          $scope: $scope,
-          $attrs: {}
-        });
-
         var regex = CalendarRegex.getUrlRegex('calendar.live.com/calendar/calendar.aspx', {
           rru: 'addevent',
           summary: '(.*)',
@@ -109,14 +104,8 @@ describe('AddtocalendarCtrl', function() {
      * iCalendar/Outlook
      */
     describe('$scope.calendarUrl.icalendar ' + scope, function() {
-      var $scope = eventFixtures[scope];
 
       it('should return the url and data of an icalendar file', function() {
-        $controller('AddtocalendarCtrl', {
-          $scope: $scope,
-          $attrs: {}
-        });
-
         var regex = CalendarRegex.getIcsCalendarRegex();
 
         sinon.stub(FileSaver, 'saveAs');

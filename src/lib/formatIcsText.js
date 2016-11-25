@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * angular-addtocalendar
  * An AngularJS directive for adding an event to calendar apps.
@@ -7,7 +9,7 @@
  * Removes line breaks and ensures that the string is no
  * longer than maxLength chars (or 75 chars if none specified).
  */
-var formatIcsText = function(s, maxLength) {
+module.exports = function(s, maxLength) {
   function _wrap(s) {
     if (s.length <= maxLength) {
       return s;

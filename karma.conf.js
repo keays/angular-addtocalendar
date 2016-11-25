@@ -20,7 +20,7 @@ module.exports = function(config) {
       }
     },
 
-    frameworks: ['jasmine', 'sinon'],
+    frameworks: ['jasmine', 'sinon', 'browserify'],
 
     // list of files / patterns to load in the browser
     files: [
@@ -28,9 +28,7 @@ module.exports = function(config) {
       'node_modules/angular-mocks/angular-mocks.js',
       'node_modules/angular-file-saver/dist/angular-file-saver.bundle.js',
       'node_modules/moment/moment.js',
-      'lib/*.js',
-      'lib/**/*.js',
-      'addtocalendar/*.js',
+      'src/**/*.js',
       'test/fixtures/*.js',
       'test/lib/*.js',
       'test/*.spec.js'
@@ -40,8 +38,8 @@ module.exports = function(config) {
 
 
     preprocessors: {
-      'lib/*.js': ['coverage'],
-      'addtocalendar/*.js': ['coverage'],
+      'src/**/*.js': ['coverage', 'browserify'],
+      'test/**/*.js': ['browserify']
     },
 
     coverageReporter: {
@@ -70,19 +68,12 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: [
-      'Chrome',
-      'Firefox',
-      'PhantomJS'
+      'Chrome'
     ],
-
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
-
-    // Concurrency level
-    // how many browser should be started simultanous
-    concurrency: Infinity
+    singleRun: false
   };
 
 

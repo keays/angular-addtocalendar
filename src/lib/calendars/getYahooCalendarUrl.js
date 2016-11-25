@@ -1,4 +1,8 @@
-function getYahooCalendarUrl(data) {
+'use strict';
+
+var getHoursDuration = require('../getHoursDuration');
+
+module.exports = function(data) {
   var yahooCalendarUrl = 'http://calendar.yahoo.com/?v=60&view=d&type=20';
   var duration = getHoursDuration(data.startDate, data.endDate);
 
@@ -8,4 +12,4 @@ function getYahooCalendarUrl(data) {
   yahooCalendarUrl += '&in_loc=' + data.location;
 
   return yahooCalendarUrl;
-}
+};

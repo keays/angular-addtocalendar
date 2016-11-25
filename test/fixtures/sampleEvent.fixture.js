@@ -1,8 +1,10 @@
+'use strict';
+
 /*
  * angular-addtocalendar
- * An AngularJS directive for adding an event to calendar apps. 
+ * An AngularJS directive for adding an event to calendar apps.
  */
-var eventFixtures = {
+module.exports = {
   sampleEventFixture: {
     startDate: '20150704T190000',
     endDate: '20150704T210000',

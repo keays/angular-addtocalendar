@@ -1,8 +1,12 @@
+'use strict';
+
+var formatIcsText = require('../formatIcsText');
+
 /**
  * Returns file contents for a .ics file.
  * @return {String}  ics calendar data
  */
-function getIcsCalendar(data) {
+module.exports = function (data) {
   return [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
@@ -17,4 +21,4 @@ function getIcsCalendar(data) {
     'END:VEVENT',
     'END:VCALENDAR'
   ].join('\n');
-}
+};

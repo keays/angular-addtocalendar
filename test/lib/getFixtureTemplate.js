@@ -1,19 +1,25 @@
-/**
- * angular-addtocalendar
- * An AngularJS directive for adding an event to calendar apps. 
- * 
- * Returns the angular html for the given addtocalendar fixture.
- */
 'use strict';
 
-function getFixtureTemplate(fixture, fixtureTag) {
+/**
+ * angular-addtocalendar
+ * An AngularJS directive for adding an event to calendar apps.
+ *
+ * Returns the angular html for the given addtocalendar fixture.
+ */
+
+
+module.exports = function(fixture, fixtureTag) {
   var el = [fixtureTag];
-  forEachAttr(fixture, function(key, value) {
-    var attr = key;
-    if(value && value !== '') {
-      attr += '="' + value + '"';
+
+  for(var key in fixture) {
+    if(fixture.hasOwnProperty(key) && key.indexOf('$') === -1) {
+      var value = fixture[key];
+      if(value && value !== '') {
+        key += '="' + value + '"';
+      }
+      el.push(key);
     }
-    el.push(attr);
-  });
+  }
+
   return '<' + el.join(' ') + '></' + fixtureTag + '>';
-}
+};

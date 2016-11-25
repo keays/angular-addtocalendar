@@ -1,10 +1,13 @@
 /**
  * angular-addtocalendar
- * An AngularJS directive for adding an event to calendar apps. 
- * 
+ * An AngularJS directive for adding an event to calendar apps.
+ *
  * Library functions test suite.
  */
 'use strict';
+
+var forEachAttr = require('../src/lib/forEachAttr');
+var formatIcsText = require('../src/lib/formatIcsText');
 
 describe('library functions', function() {
   describe('forEachAttr', function() {

@@ -1,8 +1,10 @@
+'use strict';
+
 /*
  * angular-addtocalendar
- * An AngularJS directive for adding an event to calendar apps. 
+ * An AngularJS directive for adding an event to calendar apps.
  */
-var uibFixture = {
+module.exports = {
   'start-date'  : '20150704T190000',
   'end-date'    : '20150704T210000',
   'title'       : 'Fourth of July Fireworks',

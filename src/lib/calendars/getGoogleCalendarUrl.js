@@ -1,4 +1,6 @@
-function getGoogleCalendarUrl(data) {
+'use strict';
+
+module.exports = function(data) {
   var googleCalendarUrl = 'https://www.google.com/calendar/render?action=TEMPLATE';
   googleCalendarUrl += '&text=' + data.title;
   googleCalendarUrl += '&dates=' + data.startDate + '/' + data.endDate;
@@ -6,4 +8,4 @@ function getGoogleCalendarUrl(data) {
   googleCalendarUrl += '&location=' + data.location;
 
   return googleCalendarUrl;
-}
+};

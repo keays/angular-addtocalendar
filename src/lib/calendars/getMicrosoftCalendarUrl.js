@@ -1,4 +1,6 @@
-function getMicrosoftCalendarUrl(data) {
+'use strict';
+
+module.exports = function(data) {
   var microsoftCalendarUrl = 'http://calendar.live.com/calendar/calendar.aspx?rru=addevent';
   microsoftCalendarUrl += '&summary=' + data.title;
   microsoftCalendarUrl += '&dtstart=' + data.startDate + '&dtend=' + data.endDate;
@@ -6,4 +8,4 @@ function getMicrosoftCalendarUrl(data) {
   microsoftCalendarUrl += '&location=' + data.location;
 
   return microsoftCalendarUrl;
-}
+};

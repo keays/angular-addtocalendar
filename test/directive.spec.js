@@ -1,3 +1,10 @@
+'use strict';
+
+var dropdownFixture = require('./fixtures/dropdown.fixture');
+var fixtureHasHtmlPrefixes = require('./lib/fixtureHasHtmlPrefixes');
+var getFixtureTemplate = require('./lib/getFixtureTemplate');
+var uibFixture = require('./fixtures/uib.fixture');
+
 describe('addtocalendar directive', function() {
   var $compile,
       $rootScope;

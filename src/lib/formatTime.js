@@ -1,4 +1,8 @@
-function formatTime(timestamp, inputFormat) {
+'use strict';
+
+var moment = require('moment');
+
+module.exports = function(timestamp, inputFormat) {
   var formats = ['YYYYMMDD', 'HHmmss'];
 
   var date = (function() {
@@ -11,4 +15,4 @@ function formatTime(timestamp, inputFormat) {
   return formats.map(function(format) {
     return date.format(format);
   }).join('T');
-}
+};
